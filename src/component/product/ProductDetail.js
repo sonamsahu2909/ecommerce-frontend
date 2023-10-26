@@ -1,7 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+import { GetProduct, GetProductDetail } from '../../redux/actions/ProductAction'
 
 function ProductDetail() {
+  const {id} = useParams()
+  // console.log(id)
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(GetProductDetail(id))
+  },[dispatch,id])
   return ( 
     <>
      {/* Breadcrumb Start */}

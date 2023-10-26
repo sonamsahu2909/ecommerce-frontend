@@ -8,6 +8,7 @@ import Detail from "./component/demo/Detail";
 import Contact from "./component/demo/Contact";
 import Shop from "./component/demo/Shop";
 import {Routes, Route } from "react-router-dom";
+import ProductDetail from "./component/product/ProductDetail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/checkout" element={<CheckOut />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/shop" element={<Shop />} />
+          <Route exact path="/productdetail/:id" element={<ProductDetail/>} />
         </Routes>
       <Footer />
     </>

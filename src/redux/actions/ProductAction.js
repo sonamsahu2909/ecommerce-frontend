@@ -35,9 +35,10 @@ export const GetProduct = () => async (dispatch) => {
 };
 
 export const GetProductDetail =(id) => async(dispatch) =>{
+  console.log(id)
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST });
-        let link = `https://ecommerceapi-d3ul.onrender.com/api/productdetail/${id}`;
+        let link = `https://ecommerceapi-d3ul.onrender.com/api/productdetail/64dc8ab39b45b521c7df3248`;
         const { productdetail } = await axios.get(link);
         console.log(productdetail)
         dispatch({

@@ -11,7 +11,7 @@ function Home() {
     const {categories} = useSelector((state)=>state.cat)
     const {products} = useSelector((state)=>state.pro)
     // console.log(categories)
-    console.log(products)
+    // console.log(products)
 
 
     useEffect(()=>{
