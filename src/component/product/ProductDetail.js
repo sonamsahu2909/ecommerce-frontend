@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { GetProduct, GetProductDetail } from '../../redux/actions/ProductAction'
+import {  GetProductDetail } from '../../redux/actions/ProductAction'
 
 function ProductDetail() {
   const {id} = useParams()
   // console.log(id)
+  const {productDetail} = useSelector(state => state.pdetail)
+  console.log(productDetail)
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(GetProductDetail(id))

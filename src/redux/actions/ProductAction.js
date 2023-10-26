@@ -35,20 +35,20 @@ export const GetProduct = () => async (dispatch) => {
 };
 
 export const GetProductDetail =(id) => async(dispatch) =>{
-  console.log(id)
+  // console.log(id)
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST });
-        let link = `https://ecommerceapi-d3ul.onrender.com/api/productdetail/64dc8ab39b45b521c7df3248`;
-        const { productdetail } = await axios.get(link);
-        console.log(productdetail)
+        let link = `https://ecommerceapi-d3ul.onrender.com/api/productdetail/${id}`;
+        const { data } = await axios.get(link);
+        // console.log(data)
         dispatch({
           type: PRODUCT_DETAILS_SUCCESS,
-          payload: productdetail,
+          payload: data,
         });
       } catch (error) {
         dispatch({
           type: PRODUCT_DETAILS_FAILED,
-          payload: error.response.productdetail.message,
+          payload: error.response.data.message,
         });
       }
 }
