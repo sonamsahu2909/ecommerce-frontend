@@ -52,3 +52,4 @@ export const GetProductDetail =(id) => async(dispatch) =>{
         });
       }
 }
+

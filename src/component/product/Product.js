@@ -7,11 +7,11 @@ function Product({productdata}) {
     <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div className="product-item bg-light mb-4">
                     <div className="product-img position-relative overflow-hidden">
-                        {/* <Link to={`productdetail/${productdata._id}`}> */}
+                        <Link  to={`productdetail/${productdata._id}`}>
                         <img className="img-fluid w-100" src={productdata.image[0].url} alt=""/>
-                        {/* </Link> */}
+                        </Link>
                         <div className="product-action">
-                            <Link className="btn btn-outline-dark btn-square" to={`productdetail/${productdata._id}`}><i className="fa fa-shopping-cart"></i></Link>
+                            <Link className="btn btn-outline-dark btn-square"><i className="fa fa-shopping-cart"></i></Link>
                             <Link className="btn btn-outline-dark btn-square" href=""><i className="far fa-heart"></i></Link>
                             <Link className="btn btn-outline-dark btn-square" href=""><i className="fa fa-sync-alt"></i></Link>
                             <Link className="btn btn-outline-dark btn-square" href=""><i className="fa fa-search"></i></Link>
