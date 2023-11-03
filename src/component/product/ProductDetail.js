@@ -75,14 +75,14 @@ function ProductDetail() {
               </div>
               <Link
                 class="carousel-control-prev"
-                href="#product-carousel"
+                to="#product-carousel"
                 data-slide="prev"
               >
                 <i class="fa fa-2x fa-angle-left text-dark"></i>
               </Link>
               <Link
                 class="carousel-control-next"
-                href="#product-carousel"
+                to="#product-carousel"
                 data-slide="next"
               >
                 <i class="fa fa-2x fa-angle-right text-dark"></i>
@@ -247,24 +247,26 @@ function ProductDetail() {
                     </button>
                   </div>
                 </div>
+                <Link to='/cart'>
                 <button class="btn btn-primary px-3" onClick={add_to_cart_handler}>
                   <i class="fa fa-shopping-cart mr-1" ></i>{" "}
                   <b style={{ color: "red" }}>Add to Cart</b>
                 </button>
+                </Link>
               </div>
               <div class="d-flex pt-2">
                 <strong class="text-dark mr-2">Share on:</strong>
                 <div class="d-inline-flex">
-                  <Link class="text-dark px-2" href="/">
+                  <Link class="text-dark px-2" to="/">
                     <i class="fab fa-facebook-f"></i>
                   </Link>
-                  <Link class="text-dark px-2" href="/">
+                  <Link class="text-dark px-2" to="/">
                     <i class="fab fa-twitter"></i>
                   </Link>
-                  <Link class="text-dark px-2" href="/">
+                  <Link class="text-dark px-2" to="/">
                     <i class="fab fa-linkedin-in"></i>
                   </Link>
-                  <Link class="text-dark px-2" href="/">
+                  <Link class="text-dark px-2" to="/">
                     <i class="fab fa-pinterest"></i>
                   </Link>
                 </div>
@@ -276,27 +278,27 @@ function ProductDetail() {
           <div class="col">
             <div class="bg-light p-30">
               <div class="nav nav-tabs mb-4">
-                <Link
+                <a
                   class="nav-item nav-link text-dark active"
                   data-toggle="tab"
                   href="#tab-pane-1"
                 >
                   <b style={{ color: "purple" }}>Description</b>
-                </Link>
-                <Link
+                </a>
+                <a
                   class="nav-item nav-link text-dark"
                   data-toggle="tab"
                   href="#tab-pane-2"
                 >
                   <b style={{ color: "purple" }}>Information</b>
-                </Link>
-                <Link
+                </a>
+                <a
                   class="nav-item nav-link text-dark"
                   data-toggle="tab"
                   href="#tab-pane-3"
                 >
                   <b style={{ color: "purple" }}>Reviews (0)</b>
-                </Link>
+                </a>
               </div>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-pane-1">
@@ -306,25 +308,24 @@ function ProductDetail() {
                   <p>
                     <b>{productDetail.description}</b>
                   </p>
+                  
                 </div>
                 <div class="tab-pane fade" id="tab-pane-2">
                   <h4 class="mb-3">
                     <b style={{ color: "black" }}>Additional Information</b>
                   </h4>
                   <p>
-                    <b>
-                      The reflex design scheme is the primary difference between
-                      a DSLR and other digital cameras. In the reflex design,
-                      light travels through the lens and then to a mirror that
-                      alternates to send the image to either a prism, which
-                      shows the image in the optical viewfinder, or the image
-                      sensor when the shutter release button is pressed. The
-                      viewfinder of a DSLR presents an image that will not
-                      differ substantially from what is captured by the camera's
-                      sensor as it presents it as a direct optical view through
-                      the main camera lens, rather than showing an image through
-                      a separate secondary lens.
-                    </b>
+                    <b>The reflex design scheme is the primary difference between a
+                    DSLR and other digital cameras. In the reflex design, light
+                    travels through the lens and then to a mirror that
+                    alternates to send the image to either a prism, which shows
+                    the image in the optical viewfinder, or the image sensor
+                    when the shutter release button is pressed. The viewfinder
+                    of a DSLR presents an image that will not differ
+                    substantially from what is captured by the camera's sensor
+                    as it presents it as a direct optical view through the main
+                    camera lens, rather than showing an image through a separate
+                    secondary lens.</b>
                   </p>
                   <div class="row">
                     <div class="col-md-6">
@@ -387,7 +388,7 @@ function ProductDetail() {
                             Sonam Sahu
                             <small>
                               {" "}
-                              - <i>15 Aug 1998</i>
+                              - <i>08 July 2004</i>
                             </small>
                           </h6>
                           <div class="text-primary mb-2">
@@ -407,17 +408,13 @@ function ProductDetail() {
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <h4 class="mb-4">
-                        <b style={{ color: "black" }}>Leave a review</b>
-                      </h4>
+                      <h4 class="mb-4"><b style={{color:'black'}}>Leave a review</b></h4>
                       <small>
                         Your email address will not be published. Required
                         fields are marked *
                       </small>
                       <div class="d-flex my-3">
-                        <p class="mb-0 mr-2" style={{ color: "red" }}>
-                          <b>Your Rating * :</b>
-                        </p>
+                        <p class="mb-0 mr-2" style={{color:'red'}}><b>Your Rating * :</b></p>
                         <div class="text-primary">
                           <i class="far fa-star"></i>
                           <i class="far fa-star"></i>
@@ -428,9 +425,7 @@ function ProductDetail() {
                       </div>
                       <form>
                         <div class="form-group">
-                          <label for="message" style={{ color: "red" }}>
-                            <b>Your Review *</b>
-                          </label>
+                          <label for="message" style={{color:'red'}}><b>Your Review *</b></label>
                           <textarea
                             id="message"
                             cols="30"
@@ -439,15 +434,11 @@ function ProductDetail() {
                           ></textarea>
                         </div>
                         <div class="form-group">
-                          <label for="name" style={{ color: "red" }}>
-                            <b>Your Name *</b>
-                          </label>
+                          <label for="name" style={{color:'red'}}><b>Your Name *</b></label>
                           <input type="text" class="form-control" id="name" />
                         </div>
                         <div class="form-group">
-                          <label for="email" style={{ color: "red" }}>
-                            <b>Your Email *</b>
-                          </label>
+                          <label for="email" style={{color:'red'}}><b>Your Email *</b></label>
                           <input type="email" class="form-control" id="email" />
                         </div>
                         <div class="form-group mb-0">

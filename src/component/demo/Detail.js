@@ -44,14 +44,14 @@ function Detail() {
               </div>
               <Link
                 class="carousel-control-prev"
-                href="#product-carousel"
+                to="#product-carousel"
                 data-slide="prev"
               >
                 <i class="fa fa-2x fa-angle-left text-dark"></i>
               </Link>
               <Link
                 class="carousel-control-next"
-                href="#product-carousel"
+                to="#product-carousel"
                 data-slide="next"
               >
                 <i class="fa fa-2x fa-angle-right text-dark"></i>
@@ -205,7 +205,7 @@ function Detail() {
               <div class="d-flex align-items-center mb-4 pt-2">
                 <div
                   class="input-group quantity mr-3"
-                  style={{ width: "130px" }}
+                  style={{ width: "140px" }}
                 >
                   <div class="input-group-btn">
                     <button class="btn btn-primary btn-minus">
@@ -231,16 +231,16 @@ function Detail() {
               <div class="d-flex pt-2">
                 <strong class="text-dark mr-2">Share on:</strong>
                 <div class="d-inline-flex">
-                  <Link class="text-dark px-2" href="/">
+                  <Link class="text-dark px-2" to="/">
                     <i class="fab fa-facebook-f"></i>
                   </Link>
-                  <Link class="text-dark px-2" href="/">
+                  <Link class="text-dark px-2" to="/">
                     <i class="fab fa-twitter"></i>
                   </Link>
-                  <Link class="text-dark px-2" href="/">
+                  <Link class="text-dark px-2" to="/">
                     <i class="fab fa-linkedin-in"></i>
                   </Link>
-                  <Link class="text-dark px-2" href="/">
+                  <Link class="text-dark px-2" to="/">
                     <i class="fab fa-pinterest"></i>
                   </Link>
                 </div>
@@ -252,27 +252,27 @@ function Detail() {
           <div class="col">
             <div class="bg-light p-30">
               <div class="nav nav-tabs mb-4">
-                <Link
+                <a
                   class="nav-item nav-link text-dark active"
                   data-toggle="tab"
                   href="#tab-pane-1"
                 >
                   <b style={{ color: "purple" }}>Description</b>
-                </Link>
-                <Link
+                </a>
+                <a
                   class="nav-item nav-link text-dark"
                   data-toggle="tab"
                   href="#tab-pane-2"
                 >
                   <b style={{ color: "purple" }}>Information</b>
-                </Link>
-                <Link
+                </a>
+                <a
                   class="nav-item nav-link text-dark"
                   data-toggle="tab"
                   href="#tab-pane-3"
                 >
                   <b style={{ color: "purple" }}>Reviews (0)</b>
-                </Link>
+                </a>
               </div>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-pane-1">
@@ -380,7 +380,7 @@ function Detail() {
                             Sonam Sahu
                             <small>
                               {" "}
-                              - <i>15 Aug 1998</i>
+                              - <i>08 July 2004</i>
                             </small>
                           </h6>
                           <div class="text-primary mb-2">
@@ -591,7 +591,7 @@ function Detail() {
 
     
     {/*Back to Top */}
-    {/* <Link href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></Link> */}
+    {/* <Link to="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></Link> */}
     </>
   )
 }
