@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Cart() {
+function Cart(cartdata) {
+    
+    
   return (
     <>
     {/* Breadcrumb Start */}
@@ -35,8 +37,8 @@ function Cart() {
                     </thead>
                     <tbody className="align-middle">
                         <tr>
-                            <td className="align-middle"><img src="img/product-1.jpg" alt="product1" style={{width:'50px'}} /> Product Name</td>
-                            <td className="align-middle">Rs 150</td>
+                            <td className="align-middle"><img src="img/product-1.jpg" alt="product1" style={{width:'50px'}} /> {cartdata.name}</td>
+                            <td className="align-middle">Rs {cartdata.price}</td>
                             <td className="align-middle">
                                 <div className="input-group quantity mx-auto" style={{width:'100px'}}>
                                     <div className="input-group-btn">
@@ -55,7 +57,7 @@ function Cart() {
                             <td className="align-middle">Rs 150</td>
                             <td className="align-middle"><button className="btn btn-sm btn-danger"><i className="fa fa-times"></i></button></td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td className="align-middle"><img src="img/product-2.jpg" alt="" style={{width:'50px'}} /> Product Name</td>
                             <td className="align-middle">Rs 150</td>
                             <td className="align-middle">
@@ -138,7 +140,7 @@ function Cart() {
                             </td>
                             <td className="align-middle">Rs 150</td>
                             <td className="align-middle"><button className="btn btn-sm btn-danger"><i className="fa fa-times"></i></button></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>

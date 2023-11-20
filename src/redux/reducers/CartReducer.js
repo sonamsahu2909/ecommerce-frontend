@@ -8,6 +8,7 @@ export const CartReducer = (
   state = { cartItems: [], shippingInfo: {} },
   action
 ) => {
+  // console.log(action.payload)
   switch (action.type) {
     case ADD_TO_CART:
       const item = action.payload;

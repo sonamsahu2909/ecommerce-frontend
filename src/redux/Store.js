@@ -7,8 +7,8 @@ import {
   productReducer,
 } from "./reducers/ProductReducer";
 import { sliderReducer } from "./reducers/SliderReducer";
-import { json } from "react-router-dom";
 import { CartReducer } from "./reducers/CartReducer";
+
 
 const reducer = combineReducers({
   cat: categoryReducer,
