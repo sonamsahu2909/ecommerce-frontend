@@ -7,10 +7,12 @@ import { GetProduct } from "../redux/actions/ProductAction";
 import Product from "./product/Product";
 import Slider from "./slider/Slider";
 import { GetSlider } from "../redux/actions/SliderAction";
+import Loader from "./layouts/loader/Loader";
+import Message from "./layouts/loader/Message";
 
 function Home() {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.cat);
+  const { categories,loading,error } = useSelector((state) => state.cat);
   const { products } = useSelector((state) => state.pro);
   const { sliders } = useSelector((state) => state.slider);
   // console.log(categories)
@@ -49,7 +51,11 @@ function Home() {
                 <li data-target="#header-carousel" data-slide-href="2"></li>
               </ol>
               <div className="carousel-inner">
-              {sliders && sliders.map((s) => <Slider sliderdata={s} />)}
+              { loading?(<Loader/>):error?(<Message/>):(
+               sliders.map((s) => <Slider sliderdata={s} />)
+              )
+              }
+
                 {/* <div
                   className="carousel-item position-relative active"
                   style={{ height: "460px" }}
@@ -213,7 +219,10 @@ function Home() {
           <span className="bg-secondary pr-3">Categories</span>
         </h2>
         <div className="row px-xl-5 pb-3">
-          {categories && categories.map((c) => <Category categorydata={c} />)}
+        { loading?(<Loader/>):error?(<Message/>):(
+           categories.map((c) => <Category categorydata={c} />)
+        )
+      }
         </div>
       </div>
       {/* Categories End */}
@@ -224,7 +233,9 @@ function Home() {
           <span className="bg-secondary pr-3">Featured Products</span>
         </h2>
         <div className="row px-xl-5">
-          {products && products.map((p) => <Product productdata={p} />)}
+          { loading?(<Loader/>):error?(<Message/>):(
+             products.map((p) => <Product productdata={p} />)
+            )}
 
         </div>
       </div>

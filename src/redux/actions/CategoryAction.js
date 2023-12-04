@@ -9,7 +9,7 @@ import axios from 'axios'
 export const GetCategory =()=>async(dispatch)=>{
     try{
         dispatch({type:ALL_CATEGORY_REQUEST})
-        let link = 'https://ecommerceapi-d3ul.onrender.com/api/category/display'
+        let link = '/category/display'
         const {data} = await axios.get(link)
         // console.log(data)
         dispatch({

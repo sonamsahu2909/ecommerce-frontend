@@ -6,7 +6,7 @@ import {
 import axios from "axios";
 
 export const AddItemToCart =(id,quantity)=>async(dispatch,getState)=>{
-    let link = `https://ecommerceapi-d3ul.onrender.com/api/productdetail/${id}`;
+    let link = `/productdetail/${id}`;
     const { data } = await axios.get(link);
     // console.log(data)
     dispatch({

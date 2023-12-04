@@ -9,7 +9,7 @@ import axios from 'axios'
 export const GetSlider =()=>async(dispatch)=>{
     try{
         dispatch({type:ALL_SLIDER_REQUEST})
-        let link = 'https://ecommerceapi-d3ul.onrender.com/api/slider/display'
+        let link = '/slider/display'
         const {data} = await axios.get(link)
         // console.log(data)
         dispatch({

@@ -1,8 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate  } from 'react-router-dom'
 import '../user/login.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { login_user } from '../../redux/actions/UserAction'
+import { CLEAR_ERRORS } from '../../redux/constants/UserConstant'
 
 function Login() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { isAuthenticated, error } = useSelector((state) => state.auth)
+
+  const [email,setEmail] = useState()
+  const [password,setpassword] = useState()
+
+  const submithandler = (e)=>{
+    e.preventDefault()
+    // console.log(email,password)
+    dispatch(login_user(email,password))
+  }
+  useEffect(()=>{
+    if(error){
+      alert.error(error)
+      dispatch(CLEAR_ERRORS)
+    }
+    if(isAuthenticated){
+      navigate('/')
+    }
+  },[dispatch,error,isAuthenticated,navigate])
   return (
     <>
     <div className="container-fluid wh">
@@ -13,10 +37,11 @@ function Login() {
               <div className="card shadow-lg login bg-secondary">
                 <h3 className=" text-center pk "> Admin Login</h3>
                 <div className="card-body">
-                  <form>
+                  <form onSubmit={submithandler}>
                     <div className="mb-4">
                       {/* <label>UserName:</label> */}
                       <input
+                        onChange={(e)=>setEmail(e.target.value)}
                         type="text"
                         name=""
                         className="form-control "
@@ -26,6 +51,7 @@ function Login() {
                     <div className="mb-4">
                       {/* <label>Password:</label> */}
                       <input
+                        onChange={(e)=>setpassword(e.target.value)}
                         type="password"
                         name=""
                         className="form-control"
@@ -35,7 +61,7 @@ function Login() {
 
                     <center>
                       {" "}
-                      <button type="button" class="btn btn-success ">
+                      <button type="submit" class="btn btn-success ">
                         Login
                       </button>
                     </center>

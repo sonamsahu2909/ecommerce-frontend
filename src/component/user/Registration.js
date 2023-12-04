@@ -1,10 +1,44 @@
-// name email pass confirmpass, image
-
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import '../user/register.css'
+import {useDispatch,useSelector} from 'react-redux'
+import { register } from '../../redux/actions/UserAction'
+import { useAlert } from 'react-alert'
+import { CLEAR_ERRORS } from '../../redux/constants/UserConstant'
 
 function Registration() {
+  const { isAuthenticated, error } = useSelector((state) => state.auth)
+  const [name,setName] = useState('')
+  const [email,setEmail] = useState('')
+  const [password,setpassword] = useState('')
+  const [cpassword,setCPassword] = useState('')
+  const [image,setAvtar] = useState('')
+  const dispatch = useDispatch() 
+  const history = useNavigate()
+  const alert = useAlert()
+  
+  const submithandler = (e)=>{
+    e.preventDefault()
+    // console.log(name,email,password,cpassword)
+    // console.log(image)
+    const myForm = new FormData()
+    myForm.append('name',name)
+    myForm.append('email',email)
+    myForm.append('password',password)
+    myForm.append('cpassword',cpassword)
+    myForm.append('image',image)
+    dispatch(register(myForm))
+  }
+  useEffect(()=>{
+    if(error){
+      alert.error(error)
+      dispatch(CLEAR_ERRORS)
+    }
+    if(isAuthenticated){
+      history('/login')
+    }
+  },[dispatch,alert,error,isAuthenticated,history])
+
   return (
     <>
     <div className="container-fluid wh8">
@@ -15,19 +49,21 @@ function Registration() {
               <div className="card shadow-lg login8 bg-secondary">
                 <h3 className=" text-center pk "> Administrator Login</h3>
                 <div className="card-body">
-                  <form>
+                  <form onSubmit={submithandler}>
                     <div className="mb-4">
                       {/* <label>UserName:</label> */}
                       <input
+                        onChange={(e)=>setName(e.target.value)}
                         type="text"
                         name=""
                         className="form-control "
-                        placeholder="Name"
+                        placeholder="UserName"
                       />
                     </div>
                     <div className="mb-4">
                       {/* <label>UserName:</label> */}
                       <input
+                        onChange={(e)=>setEmail(e.target.value)}
                         type="text"
                         name=""
                         className="form-control "
@@ -37,6 +73,7 @@ function Registration() {
                     <div className="mb-4">
                       {/* <label>Password:</label> */}
                       <input
+                        onChange={(e)=>setpassword(e.target.value)}
                         type="password"
                         name=""
                         className="form-control"
@@ -46,24 +83,24 @@ function Registration() {
                     <div className="mb-4">
                       {/* <label>Password:</label> */}
                       <input
+                        onChange={(e)=>setCPassword(e.target.value)}
                         type="password"
                         name=""
                         className="form-control"
-                        placeholder="Conform Password"
+                        placeholder="Confirm Password"
                       />
                     </div>
                     <div className="mb-4">
                       <input
+                        onChange={(e)=>setAvtar(e.target.files[0])}
                         type="file"
-                        name="image"
-                       
-                        
+                        name="image"       
                       />
                     </div>
 
                     <center>
                       {" "}
-                      <button type="button" className="btn btn-warning">
+                      <button type="submit"  className="btn btn-warning">
                         Register
                       </button>
                     </center>
