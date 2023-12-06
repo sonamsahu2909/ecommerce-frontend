@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./component/layouts/Header";
 import Footer from "./component/layouts/Footer";
 import Home from "./component/Home";
@@ -11,8 +11,14 @@ import ProductDetail from "./component/product/ProductDetail";
 import Cart from "./component/cart/Cart";
 import Login from "./component/user/Login";
 import Registration from "./component/user/Registration";
+import { useDispatch } from "react-redux";
+import { loadUser } from "./redux/actions/UserAction";
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(loadUser())
+  },[dispatch])
   return (
     <>
       <Header />

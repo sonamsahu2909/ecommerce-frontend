@@ -4,7 +4,10 @@ import {
     REGISTER_USER_FAIL,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
-    LOGIN_FAIL
+    LOGIN_FAIL,
+    LOAD_USER_REQUEST,
+    LOAD_USER_SUCCESS,
+    LOAD_USER_FAIL
 }from '../constants/UserConstant'
 
 import axios from 'axios'
@@ -52,4 +55,26 @@ export const login_user = (email,password) => async (dispatch) => {
         });
     }
 }
+
+export const loadUser = () => async(dispatch) => {
+    try{
+        dispatch({ type: LOAD_USER_REQUEST })
+
+        let link = '/me'
+
+        const { data } = await axios.get(link)
+        console.log(data)
+        
+        dispatch({
+            type: LOAD_USER_SUCCESS,
+            payload: data.user
+        })
+    }catch(error){
+        dispatch({
+            type: LOAD_USER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
 

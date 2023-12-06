@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { GetProductDetail } from "../../redux/actions/ProductAction";
 import { AddItemToCart } from "../../redux/actions/CartAction";
+import Loader from "../layouts/loader/Loader";
+import Message from "../layouts/loader/Message";
 
 function ProductDetail() {
   const { id } = useParams();
   // console.log(id)
-  const { productDetail } = useSelector((state) => state.pdetail);
+  const { productDetail,loading,error } = useSelector((state) => state.pdetail);
   // console.log(productDetail)
   const dispatch = useDispatch();
   useEffect(() => {
@@ -51,6 +53,7 @@ function ProductDetail() {
       {/* Breadcrumb End */}
 
       {/* Shop Detail Start */}
+      {loading?(<Loader/>):error?(<Message/>):(
       <div class="container-fluid pb-5">
         <div class="row px-xl-5">
           <div class="col-lg-5 mb-30">
@@ -457,6 +460,7 @@ function ProductDetail() {
           </div>
         </div>
       </div>
+      )}
       {/* Shop Detail End */}
 
     </>
