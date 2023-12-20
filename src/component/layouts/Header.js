@@ -1,7 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch,useSelector} from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../redux/actions/UserAction";
+import {useAlert} from "react-alert"
 
 function Header() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const alert = useAlert()
+  const { user, loading } = useSelector((state) => state.auth);
+  // console.log(user);
+  const handleLogout = ()=>{
+    dispatch(logout())
+    alert.success('logout successfully')
+  }
   return (
     <>
       {/* Topbar Start */}
@@ -26,67 +39,61 @@ function Header() {
           </div>
           <div className="col-lg-6 text-center text-lg-right">
             <div className="d-inline-flex align-items-center">
-              <div className="btn-group">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-light dropdown-toggle"
-                  data-toggle="dropdown"
-                >
-                  My Account
-                </button>
-                <div className="dropdown-menu dropdown-menu-right">
-                  <Link to="/login">
-                    <button className="dropdown-item" type="button">
-                      Sign in
-                    </button>
+              {user ? (
+                <div className="btn-group">
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-light dropdown-toggle"
+                    data-toggle="dropdown"
+                  >
+                    {user && user.name}
+                  </button>
+                  <div className="dropdown-menu dropdown-menu-right">
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "nowrap",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        style={{
+                          height: "18px",
+                          width: "18px",
+                          borderRadius: "100%",
+                          marginLeft: "20px",
+                        }}
+                        src={user.image && user.image.url}
+                        className="rounded-circle"
+                        alt={user && user.name}
+                      />
+                      <span className="dropdown-item">{user && user.name}</span>
+                    </div>
+                    {user && user.role !== "admin" ? (
+                      <Link className="dropdown-item" to="/orders/me">
+                        Orders
+                      </Link>
+                    ) : (
+                      <Link className="dropdown-item" to="/admin/dashboard">
+                        Dashboard
+                      </Link>
+                    )}
+                    <Link className="dropdown-item" to="/me">
+                      Profile
+                    </Link>
+                    <Link className="dropdown-item" onClick={handleLogout}>
+                      Logout
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                !loading && (
+                  <Link className="dropdown-item" to="/login">
+                    Sign in
                   </Link>
-                  <Link to="/register">
-                    <button className="dropdown-item" type="button">
-                      Sign up
-                    </button>
-                  </Link>
-                </div>
-              </div>
-              <div className="btn-group mx-2">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-light dropdown-toggle"
-                  data-toggle="dropdown"
-                >
-                  USD
-                </button>
-                <div className="dropdown-menu dropdown-menu-right">
-                  <button className="dropdown-item" type="button">
-                    EUR
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    GBP
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    CAD
-                  </button>
-                </div>
-              </div>
-              <div className="btn-group">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-light dropdown-toggle"
-                  data-toggle="dropdown"
-                >
-                  EN
-                </button>
-                <div className="dropdown-menu dropdown-menu-right">
-                  <button className="dropdown-item" type="button">
-                    FR
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    AR
-                  </button>
-                  <button className="dropdown-item" type="button">
-                    RU
-                  </button>
-                </div>
-              </div>
+                )
+              )}
             </div>
             <div className="d-inline-flex align-items-center d-block d-lg-none">
               <Link to="" className="btn px-0 ml-2">

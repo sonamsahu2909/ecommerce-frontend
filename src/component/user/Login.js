@@ -2,31 +2,34 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate  } from 'react-router-dom'
 import '../user/login.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { login_user } from '../../redux/actions/UserAction'
-import { CLEAR_ERRORS } from '../../redux/constants/UserConstant'
+import { clearErrors, login_user } from '../../redux/actions/UserAction'
+import { useAlert } from "react-alert";
+
 
 function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { isAuthenticated, error } = useSelector((state) => state.auth)
+  const alert = useAlert()
+  
 
   const [email,setEmail] = useState()
   const [password,setpassword] = useState()
+  const { isAuthenticated, error, loading } = useSelector((state) => state.auth)
 
   const submithandler = (e)=>{
     e.preventDefault()
     // console.log(email,password)
     dispatch(login_user(email,password))
   }
-  useEffect(()=>{
-    if(error){
-      alert.error(error)
-      dispatch(CLEAR_ERRORS)
+  useEffect(() => {
+    if (error) {
+        alert.error(error);
+        dispatch(clearErrors());
     }
-    if(isAuthenticated){
-      navigate('/')
+    if (isAuthenticated) {
+        navigate("/");
     }
-  },[dispatch,error,isAuthenticated,navigate])
+}, [error, alert, dispatch, isAuthenticated, navigate]);
   return (
     <>
     <div className="container-fluid wh">
