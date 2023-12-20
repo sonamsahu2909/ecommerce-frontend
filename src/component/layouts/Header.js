@@ -11,6 +11,7 @@ function Header() {
   const alert = useAlert()
   const { user, loading } = useSelector((state) => state.auth);
   // console.log(user);
+  const {cartItems} = useSelector((state)=>state.cart)
   const handleLogout = ()=>{
     dispatch(logout())
     alert.success('logout successfully')
@@ -79,7 +80,7 @@ function Header() {
                         Dashboard
                       </Link>
                     )}
-                    <Link className="dropdown-item" to="/me">
+                    <Link className="dropdown-item" to="/profile">
                       Profile
                     </Link>
                     <Link className="dropdown-item" onClick={handleLogout}>
@@ -280,7 +281,7 @@ function Header() {
                   </Link>
                 </div>
                 <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
-                  <Link to="/" className="btn px-0">
+                  {/* <Link to="/" className="btn px-0">
                     <i className="fas fa-heart text-primary"></i>
                     <span
                       className="badge text-secondary border border-secondary rounded-circle"
@@ -288,14 +289,14 @@ function Header() {
                     >
                       0
                     </span>
-                  </Link>
+                  </Link> */}
                   <Link to="/cart" className="btn px-0 ml-3">
                     <i className="fas fa-shopping-cart text-primary"></i>
                     <span
                       className="badge text-secondary border border-secondary rounded-circle"
                       style={{ paddingbottom: "2px" }}
                     >
-                      0
+                      {cartItems.length}
                     </span>
                   </Link>
                 </div>

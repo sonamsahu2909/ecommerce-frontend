@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { AddItemToCart } from "../../redux/actions/CartAction";
+import { AddItemToCart, RemoveItemFromCart } from "../../redux/actions/CartAction";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  // console.log(cartItems);
+  console.log(cartItems);
 
   const history = useNavigate();
 
@@ -27,10 +27,15 @@ function Cart() {
     dispatch(AddItemToCart(id, newQty));
   };
 
+  const removeCartHandler = (id)=>{
+    // dispatch(RemoveItemFromCart(id))
+  }
+
   const  checkouthandler = ()=>{
     // alert('hello')
     history('/login')
   }
+
   return (
     <>
       {/* Breadcrumb Start */}
@@ -122,7 +127,7 @@ function Cart() {
                       {`₹${item.price * item.quantity}`}{" "}
                     </td>
                     <td className="align-middle">
-                      <button className="btn btn-sm btn-danger">
+                      <button className="btn btn-sm btn-danger" onClick={removeCartHandler(item.product)}>
                         <i className="fa fa-times"></i>
                       </button>
                     </td>
@@ -169,7 +174,7 @@ function Cart() {
                     0
                   )}`}</h5>
                 </div>
-                <button className="btn btn-block btn-primary font-weight-bold my-3 py-3" onClick={checkouthandler}>
+                <button className="btn btn-block btn-primary font-weight-bold my-3 py-3" disabled={cartItems===0} onClick={checkouthandler}>
                   Proceed To Checkout
                 </button>
               </div>

@@ -13,6 +13,7 @@ import Login from "./component/user/Login";
 import Registration from "./component/user/Registration";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./redux/actions/UserAction";
+import Profile from "./component/user/profile/Profile";
 
 function App() {
   const dispatch = useDispatch()
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/productdetail/:id" element={<ProductDetail/>} />
           <Route exact path="/login" element={<Login/>} />
           <Route exact path="/register" element={<Registration/>} />
+          <Route exact path="/profile" element={<Profile/>} />
         </Routes>
       <Footer />
     </>
