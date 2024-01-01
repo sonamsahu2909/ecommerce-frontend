@@ -13,11 +13,9 @@ import {
     CLEAR_ERRORS,
     UPDATE_PASSWORD_REQUEST,
     UPDATE_PASSWORD_SUCCESS,
-    UPDATE_PASSWORD_RESET,
     UPDATE_PASSWORD_FAIL,
     UPDATE_PROFILE_REQUEST,
     UPDATE_PROFILE_SUCCESS,
-    UPDATE_PROFILE_RESET,
     UPDATE_PROFILE_FAIL
 }from '../constants/UserConstant'
 
@@ -25,7 +23,7 @@ import axios from 'axios'
 
 
 export const register = (myForm) => async (dispatch) => {
-    alert('hello')
+    // alert('hello')
     console.log(myForm)
     try {
         dispatch({ type: REGISTER_USER_REQUEST })
@@ -54,7 +52,7 @@ export const login_user = (email,password) => async (dispatch) => {
         dispatch({ type: LOGIN_REQUEST })
 
         const { data } = await axios.post('/verify_login',{email,password});
-        console.log(data);
+        // console.log(data);
         dispatch({
             type: LOGIN_SUCCESS,
             payload: data.user
@@ -74,7 +72,7 @@ export const loadUser = () => async(dispatch) => {
         let link = '/me'
 
         const { data } = await axios.get(link)
-        console.log(data)
+        // console.log(data)
         
         dispatch({
             type: LOAD_USER_SUCCESS,
@@ -98,6 +96,50 @@ export const logout = () => async (dispatch) => {
       dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
     }
 };
+
+
+// update profile
+export const updateUserProfile = (formData, id) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_PROFILE_REQUEST })
+        let link = '/updateprofile'
+
+        const { data } = await axios.post(link, formData,id)
+        console.log(data)
+
+        dispatch({
+            type: UPDATE_PROFILE_SUCCESS,
+            payload: data.success
+        })
+} catch (err) {
+        dispatch({
+            type: UPDATE_PROFILE_FAIL,
+            payload: err.response.data.message
+        })
+    }
+}
+
+
+// UPDATE PASSWORD
+export const updateUserPassword = (formData) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_PASSWORD_REQUEST })
+        let link = '/updatepassword'
+
+        const { data } = await axios.post(link, formData)
+        console.log(data)
+
+        dispatch({
+            type: UPDATE_PASSWORD_SUCCESS,
+            payload: data
+        })
+    } catch (err) {
+        dispatch({
+            type: UPDATE_PASSWORD_FAIL,
+            payload: err.response.data.message
+        })
+    }
+}
 
 // for clearing errors
 export const clearErrors = () => async (dispatch) => {

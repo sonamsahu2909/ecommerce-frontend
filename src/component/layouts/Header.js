@@ -20,6 +20,7 @@ function Header() {
     <>
       {/* Topbar Start */}
 
+    
       <div className="container-fluid">
         <div className="row bg-secondary py-1 px-xl-5">
           <div className="col-lg-6 d-none d-lg-block">
@@ -27,7 +28,7 @@ function Header() {
               <Link className="text-body mr-3" to="">
                 About
               </Link>
-              <Link className="text-body mr-3" to="">
+              <Link className="text-body mr-3" to="/contact">
                 Contact
               </Link>
               <Link className="text-body mr-3" to="">
@@ -83,7 +84,7 @@ function Header() {
                     <Link className="dropdown-item" to="/profile">
                       Profile
                     </Link>
-                    <Link className="dropdown-item" onClick={handleLogout}>
+                    <Link to='/' className="dropdown-item" onClick={handleLogout}>
                       Logout
                     </Link>
                   </div>
@@ -158,10 +159,10 @@ function Header() {
       <div className="container-fluid bg-dark mb-30">
         <div className="row px-xl-5">
           <div className="col-lg-3 d-none d-lg-block">
-            <Link
+            <a
               className="btn d-flex align-items-center justify-content-between bg-primary w-100"
               data-toggle="collapse"
-              to="#navbar-vertical"
+              href="#navbar-vertical"
               style={{ height: "65px", padding: "0 30px" }}
             >
               <h6 className="text-dark m-0">
@@ -169,13 +170,13 @@ function Header() {
                 <b>Categories</b>
               </h6>
               <i className="fa fa-angle-down text-dark"></i>
-            </Link>
+            </a>
             <nav
               className="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light"
               id="navbar-vertical"
               style={{ width: "calc(100% - 30px)", zindex: "999" }}
             >
-              <div className="navbar-nav w-100">
+              <div className="navbar-nav w-100" style={{zIndex: '4',background: 'white'}}>
                 <div className="nav-item dropdown dropright">
                   <Link
                     to="/"

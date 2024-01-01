@@ -52,6 +52,9 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
+.bg-primary1{
+  background-color: #0d1117 !important;
+}
 
 body {
   margin: 0;

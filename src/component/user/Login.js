@@ -69,7 +69,7 @@ function Login() {
                       </button>
                     </center>
                     <p className="text-center mt-4 text-black">
-                      <Link href="/" className="reg">
+                      <Link to="/ForgetPassword" className="reg">
                         <b>FORGOT_PASSWORD</b>
                       </Link>
                       <br></br>
