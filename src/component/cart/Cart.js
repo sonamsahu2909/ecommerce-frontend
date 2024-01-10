@@ -38,7 +38,7 @@ function Cart() {
   const checkouthandler = () => {
     // alert('hello')
     if (isAuthenticated){
-      navigate('/checkout')
+      navigate('/shipping')
     }
     else {
       navigate('/login')

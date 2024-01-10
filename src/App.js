@@ -18,6 +18,8 @@ import UpdateProfile from "./component/user/profile/UpdateProfile";
 import CheckOut from "./component/checkout/CheckOut";
 import ForgetPassword from "./component/user/ForgetPassword";
 import ResetPassword from "./component/user/ResetPassword";
+import Shipping from "./component/cart/Shipping";
+import ConfirmOrder from "./component/cart/ConfirmOrder";
 
 function App() {
   const dispatch = useDispatch()
@@ -42,9 +44,11 @@ function App() {
           <Route exact path="/update_profile" element={<UpdateProfile/>} />
           <Route exact path="/ForgetPassword" element={<ForgetPassword/>} />
           <Route exact path="/ResetPassword/:id" element={<ResetPassword/>} />
+          <Route exact path="/shipping" element={<Shipping/>} />
+          <Route exact path="/order/confirm" element={<ConfirmOrder/>} />
         </Routes>
       <Footer />
-    </>
+    </> 
   );
 }
 
