@@ -20,6 +20,7 @@ import ForgetPassword from "./component/user/ForgetPassword";
 import ResetPassword from "./component/user/ResetPassword";
 import Shipping from "./component/cart/Shipping";
 import ConfirmOrder from "./component/cart/ConfirmOrder";
+import Payment from "./component/cart/Payment";
 
 function App() {
   const dispatch = useDispatch()
@@ -46,6 +47,7 @@ function App() {
           <Route exact path="/ResetPassword/:id" element={<ResetPassword/>} />
           <Route exact path="/shipping" element={<Shipping/>} />
           <Route exact path="/order/confirm" element={<ConfirmOrder/>} />
+          <Route exact path="/payment" element={<Payment/>} />
         </Routes>
       <Footer />
     </> 

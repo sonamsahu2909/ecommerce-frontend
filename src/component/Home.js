@@ -145,7 +145,7 @@ function Home() {
           </div>
           <div className="col-lg-4">
             <div className="product-offer mb-30" style={{ height: "215px" }}>
-              <img className="img-fluid" src="img/offer-1.jpg" alt="" />
+              <img className="img-fluid" src="img/carsol-4.jpg" alt="" />
               <div className="offer-text">
                 <h6 className="text-white text-uppercase">Save 20%</h6>
                 <h3 className="text-white mb-3">Special Offer</h3>
@@ -155,7 +155,7 @@ function Home() {
               </div>
             </div>
             <div className="product-offer mb-30" style={{ height: "215px" }}>
-              <img className="img-fluid" src="img/offer-2.jpg" alt="" />
+              <img className="img-fluid" src="img/carsol-5.jpg" alt="" />
               <div className="offer-text">
                 <h6 className="text-white text-uppercase">Save 20%</h6>
                 <h3 className="text-white mb-3">Special Offer</h3>
@@ -246,7 +246,7 @@ function Home() {
         <div className="row px-xl-5">
           <div className="col-md-6">
             <div className="product-offer mb-30" style={{ height: "300px" }}>
-              <img className="img-fluid" src="img/offer-1.jpg" alt="" />
+              <img className="img-fluid" src="img/carsol-1.jpg" alt="" />
               <div className="offer-text">
                 <h6 className="text-white text-uppercase">Save 20%</h6>
                 <h3 className="text-white mb-3">Special Offer</h3>
@@ -257,8 +257,8 @@ function Home() {
             </div>
           </div>
           <div className="col-md-6">
-            <div className="product-offer mb-30" style={{ height: "300px" }}>
-              <img className="img-fluid" src="img/offer-2.jpg" alt="" />
+            <div className="product-offer mb-30" style={{  width:"100%", height: "300px" }}>
+              <img className="img-fluid w-100 h-100" src="img/carsol-3.jpg" alt="" />
               <div className="offer-text">
                 <h6 className="text-white text-uppercase">Save 20%</h6>
                 <h3 className="text-white mb-3">Special Offer</h3>
@@ -278,7 +278,10 @@ function Home() {
           <span className="bg-secondary pr-3">Recent Products</span>
         </h2>
         <div className="row px-xl-5">
-          <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
+        { loading?(<Loader/>):error?(<Message/>):(
+             products.map((p) => <Product productdata={p} />)
+            )}
+          {/* <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
             <div className="product-item bg-light mb-4">
               <div className="product-img position-relative overflow-hidden">
                 <img
@@ -629,7 +632,7 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* Products End */}

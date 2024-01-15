@@ -5,10 +5,10 @@ function Product({productdata}) {
   return (
     <>
     <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div className="product-item bg-light mb-4">
+                <div className="product-item bg-light mb-4" style={{height: '500px'}} >
                     <div className="product-img position-relative overflow-hidden">
                         <Link  to={`productdetail/${productdata._id}`}>
-                        <img className="img-fluid w-100" src={productdata.image[0].url} alt=""/>
+                        <img className="img-fluid w-100 mt-4" src={productdata.image.url} alt=""/>
                         </Link>
                         <div className="product-action">
                             <Link className="btn btn-outline-dark btn-square"><i className="fa fa-shopping-cart"></i></Link>

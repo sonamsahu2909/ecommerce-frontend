@@ -64,7 +64,7 @@ function ProductDetail() {
             >
               <div class="carousel-inner bg-light">
                 <div class="carousel-item active">
-                  {/* <img class="w-100 h-100" src={productDetail.image} alt="" /> */}
+                  <img class="w-100 h-100" src={productDetail.image && productDetail.image.url}  alt="" />
                 </div>
                 {/* <div class="carousel-item">
                   <img class="w-100 h-100" src="img/product-2.jpg" alt="" />
