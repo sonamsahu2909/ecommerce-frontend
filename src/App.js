@@ -21,6 +21,10 @@ import ResetPassword from "./component/user/ResetPassword";
 import Shipping from "./component/cart/Shipping";
 import ConfirmOrder from "./component/cart/ConfirmOrder";
 import Payment from "./component/cart/Payment";
+import AsusLaptop from "./component/category/categorylaptop/AsusLaptop";
+import ShopPage2 from "./component/demo/ShopPage2";
+import ShopPage3 from "./component/demo/ShopPage3";
+import CategoryDetail from "./component/category/CategoryDetail";
 
 function App() {
   const dispatch = useDispatch()
@@ -32,11 +36,12 @@ function App() {
       <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/detail" element={<Detail />} />
+          <Route exact path="/shop" element={<Shop />} />
+          <Route exact path="/asus_laptop" element={<AsusLaptop />} />
           <Route exact path="/cart" element={<Cart/>} />
           <Route exact path="/checkout" element={<CheckOut />} />
           <Route exact path="/contact" element={<Contact />} />
-          <Route exact path="/shop" element={<Shop />} />
+          <Route exact path="/categorylist" element={<CategoryDetail />} />
           <Route exact path="/productdetail/:id" element={<ProductDetail/>} />
           <Route exact path="/login" element={<Login/>} />
           <Route exact path="/register" element={<Registration/>} />
@@ -48,6 +53,7 @@ function App() {
           <Route exact path="/shipping" element={<Shipping/>} />
           <Route exact path="/order/confirm" element={<ConfirmOrder/>} />
           <Route exact path="/payment" element={<Payment/>} />
+          <Route exact path="/categorydetail" element={<CategoryDetail />} />
         </Routes>
       <Footer />
     </> 

@@ -1,11 +1,15 @@
-import React from "react";
+import React , {useState} from "react";
 import { Link } from "react-router-dom";
 import { useDispatch,useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/actions/UserAction";
 import {useAlert} from "react-alert"
+import products from "../category/db/data";
+import Card from "../category/Card";
 
 function Header() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const alert = useAlert()
@@ -16,6 +20,7 @@ function Header() {
     dispatch(logout())
     alert.success('logout successfully')
   }
+
   return (
     <>
       {/* Topbar Start */}
@@ -123,10 +128,10 @@ function Header() {
           <div className="col-lg-4">
             <Link to="" className="text-decoration-none">
               <span className="h1 text-uppercase text-primary bg-dark px-2">
-                Multi
+                Lap
               </span>
               <span className="h1 text-uppercase text-dark bg-primary px-2 ml-n1">
-                Shop
+                top
               </span>
             </Link>
           </div>
@@ -177,28 +182,37 @@ function Header() {
               style={{ width: "calc(100% - 30px)", zindex: "999" }}
             >
               <div className="navbar-nav w-100" style={{zIndex: '4',background: 'white'}}>
-                <div className="nav-item dropdown dropright">
+                {/* <div className="nav-item dropdown dropright">
                   <Link
                     to="/"
                     className="nav-link dropdown-toggle"
                     data-toggle="dropdown"
                   >
-                    Dresses{" "}
+                    All Laptop{" "}
                     <i className="fa fa-angle-right float-right mt-1"></i>
                   </Link>
                   <div className="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                    <Link to="/" className="dropdown-item">
-                      Men's Dresses
+                    <Link to="/asus_laptop" className="dropdown-item">
+                    Asus Laptop
                     </Link>
-                    <Link to="/" className="dropdown-item">
-                      Women's Dresses
+                    <Link to="/acer_laptop" className="dropdown-item">
+                    Acer Laptop
                     </Link>
-                    <Link to="/" className="dropdown-item">
-                      Baby's Dresses
+                    <Link to="/apple_macbook" className="dropdown-item">
+                    Apple Macbook
+                    </Link>
+                    <Link to="/dell_mackbook" className="dropdown-item">
+                    Dell Laptop
+                    </Link>
+                    <Link to="/hp_laptop" className="dropdown-item">
+                    Hp Laptop
+                    </Link>
+                    <Link to="/lenevo_laptop" className="dropdown-item">
+                    Lenevo Laptop
                     </Link>
                   </div>
-                </div>
-                <Link to="/" className="nav-item nav-link">
+                </div> */}
+                {/* <Link to="/" className="nav-item nav-link">
                   Shirts
                 </Link>
                 <Link to="/" className="nav-item nav-link">
@@ -221,9 +235,9 @@ function Header() {
                 </Link>
                 <Link to="/" className="nav-item nav-link">
                   Jackets
-                </Link>
-                <Link to="/" className="nav-item nav-link">
-                  Shoes
+                </Link> */}
+                <Link to="/categorylist" className="nav-item nav-link">
+                  All laptop
                 </Link>
               </div>
             </nav>
@@ -232,10 +246,10 @@ function Header() {
             <nav className="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
               <Link to="/" className="text-decoration-none d-block d-lg-none">
                 <span className="h1 text-uppercase text-dark bg-light px-2">
-                  Multi
+                  Lap
                 </span>
                 <span className="h1 text-uppercase text-light bg-primary px-2 ml-n1">
-                  Shop
+                  Top
                 </span>
               </Link>
               <button
@@ -254,7 +268,7 @@ function Header() {
                   <Link to="/" className="nav-item nav-link active">
                     <b> Home</b>
                   </Link>
-                  <Link to="/shop" className="nav-item nav-link">
+                  <Link to="/categorydetail" className="nav-item nav-link">
                     <b> Shop</b>
                   </Link>
                   <Link to="/detail" className="nav-item nav-link">
