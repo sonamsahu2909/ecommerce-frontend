@@ -1,37 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { GetProductDetail } from "../../redux/actions/ProductAction";
 import { AddItemToCart } from "../../redux/actions/CartAction";
 import Loader from "../layouts/loader/Loader";
 import Message from "../layouts/loader/Message";
+import { GetCategoryDetail } from '../../redux/actions/CategoryAction';
 
-function ProductDetail() {
-  const { id } = useParams();
-  // console.log(id)
-  const { productDetail,loading,error } = useSelector((state) => state.pdetail);
-  // console.log(productDetail)
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(GetProductDetail(id));
-  }, [dispatch, id]);
 
-  const [quantity, setQuantity] = useState(1);
-  console.log(quantity);
-  const increseQty = () => {
-    if (productDetail.stock <= quantity) return;
-    const qty = quantity + 1;
-    setQuantity(qty);
-  };
-  const decreaseQty = () => {
-    if (1 >= quantity) return;
-    const qty = quantity - 1;
-    setQuantity(qty);
-  };
-  const add_to_cart_handler = () => {
-    // alert("add_to_cart_handler");
-    dispatch(AddItemToCart(id,quantity))
-  };
+function CategoriesDetail() {
+    const { id } = useParams();
+    // console.log(id)
+    const { categoryDetail,loading,error } = useSelector((state) => state.catdetail);
+    // console.log(categoryDetail)
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(GetCategoryDetail(id));
+    }, [dispatch, id]);
+  
+    const [quantity, setQuantity] = useState(1);
+    console.log(quantity);
+    const increseQty = () => {
+      if (categoryDetail.stock <= quantity) return;
+      const qty = quantity + 1;
+      setQuantity(qty);
+    };
+    const decreaseQty = () => {
+      if (1 >= quantity) return;
+      const qty = quantity - 1;
+      setQuantity(qty);
+    };
+    const add_to_cart_handler = () => {
+      // alert("add_to_cart_handler");
+      dispatch(AddItemToCart(id,quantity))
+    }
+      
   return (
     <>
       {/* Breadcrumb Start */}
@@ -58,34 +60,25 @@ function ProductDetail() {
         <div class="row px-xl-5">
           <div class="col-lg-5 mb-30">
             <div
-              id="product-carousel"
+              id="category-carousel"
               class="carousel slide"
               data-ride="carousel"
             >
               <div class="carousel-inner bg-light">
                 <div class="carousel-item active">
-                  <img class="w-100 h-100" src={productDetail.image && productDetail.image.url}  alt="" />
+                  {/* <img class="w-100 h-100" src={categoryDetail.image[0].url}  alt="" /> */}
                 </div>
-                {/* <div class="carousel-item">
-                  <img class="w-100 h-100" src="img/product-2.jpg" alt="" />
-                </div>
-                <div class="carousel-item">
-                  <img class="w-100 h-100" src="img/product-3.jpg" alt="" />
-                </div>
-                <div class="carousel-item">
-                  <img class="w-100 h-100" src="img/product-4.jpg" alt="" />
-                </div> */}
               </div>
               <Link
                 class="carousel-control-prev"
-                to="#product-carousel"
+                to="#category-carousel"
                 data-slide="prev"
               >
                 <i class="fa fa-2x fa-angle-left text-dark"></i>
               </Link>
               <Link
                 class="carousel-control-next"
-                to="#product-carousel"
+                to="#category-carousel"
                 data-slide="next"
               >
                 <i class="fa fa-2x fa-angle-right text-dark"></i>
@@ -95,7 +88,7 @@ function ProductDetail() {
 
           <div class="col-lg-7 h-auto mb-30">
             <div class="h-100 bg-light p-30">
-              <h3 style={{ color: "purple" }}>{productDetail.name}</h3>
+              {/* <h3 style={{ color: "purple" }}>{categoryDetail.name}</h3> */}
               <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
                   <large class="fas fa-star"></large>
@@ -105,11 +98,11 @@ function ProductDetail() {
                   <large class="far fa-star"></large>
                 </div>
               </div>
-              <h3 class="font-weight-semi-bold mb-4">{`₹${productDetail.price}`}</h3>
+              {/* <h3 class="font-weight-semi-bold mb-4">{`₹${categoryDetail.price}`}</h3> */}
               <p class="mb-4">
-                <b>{productDetail.description}</b>
+                {/* <b>{categoryDetail.description}</b> */}
               </p>
-              {/* <div class="d-flex mb-3">
+              <div class="d-flex mb-3">
                 <strong class="text-dark mr-3">
                   <b style={{ color: "black" }}>Sizes:</b>
                 </strong>
@@ -232,7 +225,7 @@ function ProductDetail() {
                     </label>
                   </div>
                 </form>
-              </div> */}
+              </div>
               <div class="d-flex align-items-center mb-4 pt-2">
                 <div
                   class="input-group quantity mr-3 "
@@ -306,10 +299,10 @@ function ProductDetail() {
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-pane-1">
                   <h4 class="mb-3" style={{ color: "black" }}>
-                    <b>Product Description</b>
+                    <b>category Description</b>
                   </h4>
                   <p>
-                    <b>{productDetail.description}</b>
+                    {/* <b>{categoryDetail.description}</b> */}
                   </p>
                   
                 </div>
@@ -464,7 +457,7 @@ function ProductDetail() {
       {/* Shop Detail End */}
 
     </>
-  );
-}
+  )
+  }
 
-export default ProductDetail;
+export default CategoriesDetail

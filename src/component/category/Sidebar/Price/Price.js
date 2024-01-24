@@ -5,43 +5,43 @@ const Price = ({ handleChange }) => {
   return (
     <>
     
-      <div className="ml bg-light p-4 mb-30">
+      <div className="bg-light p-4 mb-30">
         <label className="sidebar-label-container">
-          <input onChange={handleChange} type="radio" value="" name="test2" />
+          <input onChange={handleChange} type="radio" title="all" value="" name="test2" />
           <span className="checkmark"></span>All
         </label>
 
         <Input
           handleChange={handleChange}
-          value={50}
-          title="Rs 20000 - Rs30000"
+          value={30000}
+          title="Rs 0 - 30000"
           name="test2"
         />
 
         <Input
           handleChange={handleChange}
-          value={100}
+          value={40000}
           title="Rs 30000 - Rs 40000"
           name="test2"
         />
 
         <Input
           handleChange={handleChange}
-          value={150}
+          value={50000}
           title="Rs 40000 - Rs 50000"
           name="test2"
         />
 
         <Input
           handleChange={handleChange}
-          value={200}
-          title="Rs 50000 - Rs 75000"
+          value={100000}
+          title="Rs 50000 - Rs 100000"
           name="test2"
         />
         <Input
           handleChange={handleChange}
-          value={200}
-          title="Rs 75000 - Rs 20000"
+          value={300000}
+          title="Over Rs100000"
           name="test2"
         />
       </div>

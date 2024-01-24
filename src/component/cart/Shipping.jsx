@@ -89,8 +89,8 @@ function Shipping() {
                 onChange={(e) => setCountry(e.target.value)}
                 required
               >
-                <option>seletc country</option>
-                <option value="india">India</option>
+                <option>select country</option>
+                <option value='IN'>india</option>
               </select>
             </div>
 

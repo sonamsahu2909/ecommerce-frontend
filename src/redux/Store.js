@@ -13,6 +13,7 @@ import { authReducer, userReducer } from "./reducers/UserReducer";
 
 const reducer = combineReducers({
   cat: categoryReducer,
+  catdetail: productDetailReducer,
   pro: productReducer,
   pdetail: productDetailReducer,
   slider: sliderReducer,

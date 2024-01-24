@@ -53,3 +53,7 @@ export const GetProductDetail =(id) => async(dispatch) =>{
       }
 }
 
+// for clearing errors
+export const clearErrors = () => async (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
+}
