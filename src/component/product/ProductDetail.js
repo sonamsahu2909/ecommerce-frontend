@@ -10,6 +10,7 @@ function ProductDetail() {
   const { id } = useParams();
   // console.log(id)
   const { productDetail,loading,error } = useSelector((state) => state.pdetail);
+
   // console.log(productDetail)
   const dispatch = useDispatch();
   useEffect(() => {

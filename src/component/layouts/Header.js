@@ -78,7 +78,7 @@ function Header() {
                       <span className="dropdown-item">{user && user.name}</span>
                     </div>
                     {user && user.role !== "admin" ? (
-                      <Link className="dropdown-item" to="/orders/me">
+                      <Link className="dropdown-item" to="/order/me">
                         Orders
                       </Link>
                     ) : (

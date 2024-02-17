@@ -27,6 +27,10 @@ import Payment from "./component/cart/Payment";
 import CategoriesDetail from "./component/category/CategoriesDetail";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Success from "./component/cart/Success";
+import Order from "./component/user/profile/Order";
+import CategoryList from "./component/category/CategoryList";
+import OrderDetail from "./component/user/profile/OrderDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +61,7 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         {/* <Route exact path="/categorylist" element={<CategoryDetail />} /> */}
         <Route exact path="/productdetail/:id" element={<ProductDetail />} />
+        <Route exact path="/subcategory/:id" element={<CategoryList />} />
         <Route exact path="/categoriesdetail/:id" element={<CategoriesDetail />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Registration />} />
@@ -66,7 +71,10 @@ function App() {
         <Route exact path="/ForgetPassword" element={<ForgetPassword />} />
         <Route exact path="/ResetPassword/:id" element={<ResetPassword />} />
         <Route exact path="/shipping" element={<Shipping />} />
-        <Route exact path="/order/confirm" element={<ConfirmOrder />} />      
+        <Route exact path="/order/confirm" element={<ConfirmOrder />} />
+        <Route exact path="/order/success" element={<Success />} />     
+        <Route exact path="/order/me" element={<Order />} />      
+        <Route exact path="/order/:id" element={<OrderDetail />} />      
         {/* <Route exact path="/categorydetail" element={<CategoryDetail />} /> */}
         {
          stripeApiKey && (

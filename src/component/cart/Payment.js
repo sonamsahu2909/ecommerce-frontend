@@ -11,6 +11,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import { createOrder } from "../../redux/actions/OrderAction";
 
 const options = {
   style: {
@@ -28,20 +29,21 @@ function Payment() {
   const alert = useAlert();
   const stripe = useStripe();
   const elements = useElements();
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
   };
-  // const order = {
-  //   shippingInfo,
-  //   orderItems: cartItems,
-  //   itemsPrice: orderInfo.itemsPrice,
-  //   taxPrice: orderInfo.taxPrice,
-  //   shippingPrice: orderInfo.shippingPrice,
-  //   totalPrice: orderInfo.totalPrice,
-  // };
+  const order = {
+    shippingInfo,
+    orderItems: cartItems,
+    itemsPrice: orderInfo.itemsPrice,
+    taxPrice: orderInfo.taxPrice,
+    shippingPrice: orderInfo.shippingPrice,
+    totalPrice: orderInfo.totalPrice,
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -63,12 +65,18 @@ function Payment() {
           }
         }
       })
+      // console.log(result)
       if(result.error){
         alert.error(result.error.message);
         document.querySelector('#pay_btn').disabled =false;
       }else {
-        if(result.paymentIntent === "successed"){
-          navigate('/success')
+        if(result.paymentIntent.status === "succeeded"){
+          order.paymentInfo = {
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status,
+        };
+          dispatch(createOrder(order))
+          navigate('/order/success')
           
         } else{
           alert.error("There's some issue while processing payment ");

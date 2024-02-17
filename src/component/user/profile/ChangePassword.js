@@ -62,7 +62,7 @@ function ChangePassword() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="container">
+        <div className="container" style={{maxWidth:'1200px',padding:'20px'}}>
           <div className="main-body">
             {/* Breadcrumb  */}
             <nav aria-label="breadcrumb" className="main-breadcrumb">
@@ -107,7 +107,7 @@ function ChangePassword() {
                       </Link>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                      <Link to="/order">
+                      <Link to="/order/me">
                         <h6>
                           <i className="fas fa-shopping-bag px-4"></i>MY ORDER
                         </h6>

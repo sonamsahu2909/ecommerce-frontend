@@ -90,7 +90,7 @@ function Shipping() {
                 required
               >
                 <option>select country</option>
-                <option value='IN'>india</option>
+                <option value='in'>india</option>
               </select>
             </div>
 

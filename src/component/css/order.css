@@ -1,0 +1,104 @@
+/* Order.css */
+
+/* Main container styles */
+.container-fluid {
+    padding: 20px;
+  }
+  
+  /* Main breadcrumb styles */
+  .main-breadcrumb {
+    margin-bottom: 20px;
+  }
+  
+  /* Breadcrumb item styles */
+  .breadcrumb-item {
+    font-size: 16px;
+  }
+  
+  /* Card styles */
+  .card {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  /* Card image styles */
+  .card img {
+    object-fit: cover;
+  }
+  
+  /* Card hover effect */
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* List group item styles */
+  .list-group-item {
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Table styles */
+
+  /* Ensure table is responsive */
+.table-responsive {
+    overflow-x: auto;
+  }
+
+  .table {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table header styles */
+  .table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+  
+  /* Table body styles */
+  .table td {
+    vertical-align: middle;
+  }
+  
+  /* Table action button styles */
+  .table .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Table action button icon styles */
+  .table .btn svg {
+    margin-right: 5px;
+  }
+  
+  /* Table action button hover effect */
+  .table .btn:hover {
+    background-color: #eeff00;
+    color: #fff;
+  }
+  .col-8 {
+    /* flex: 0 0 66.66667%; */
+    /* max-width: 100% !important; */
+}
+  /* Animated loading spinner */
+  .loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #dbd834;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  

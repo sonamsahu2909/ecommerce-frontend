@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddItemToCart } from "../../redux/actions/CartAction";
 import Loader from "../layouts/loader/Loader";
 import Message from "../layouts/loader/Message";
-import { GetCategoryDetail } from '../../redux/actions/CategoryAction';
+// import { GetCategoryDetail } from '../../redux/actions/CategoryAction';
 
 
 function CategoriesDetail() {
@@ -14,7 +14,7 @@ function CategoriesDetail() {
     // console.log(categoryDetail)
     const dispatch = useDispatch();
     useEffect(() => {
-      dispatch(GetCategoryDetail(id));
+      // dispatch(GetCategoryDetail(id));
     }, [dispatch, id]);
   
     const [quantity, setQuantity] = useState(1);
